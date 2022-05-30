@@ -1,0 +1,18 @@
+.main{
+    width: 100%;
+}
+.main__container{
+    max-width: 998px;
+    width: 100%;
+    border: 1px solid black;
+    margin: 40px auto;
+    min-height: 700px;
+}
+.main__cards{
+    display: flex;
+    flex-direction: column;
+}
+.main__card{
+    width: 100%;
+    padding: 10px 15px;
+}

@@ -1,0 +1,22 @@
+.header{
+    width: 100%;
+    background: cadetblue;
+    display: flex;
+}
+.header__container{
+    max-width: 998px;
+    margin: 15px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header__title{
+    margin: 0;
+    font-size: 35px;
+}
+.header__date{
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
