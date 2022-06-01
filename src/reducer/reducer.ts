@@ -9,10 +9,14 @@ export function reducer(state:any = defaultState, action:any) {
             return { ...state, tasks: [...state.tasks,...action.payload], returnTask: [...state.returnTask,...action.payload]};
         }
         case "ADD_TASK":
-            console.log(action.payload)
+            console.log(state.tasks)
             return { ...state.tasks, tasks: [{...action.payload}, ...state.tasks]  };
-        case "DEL_TASK":
-            return { ...state, tasks: state.tasks.filter((i:any) => i.id !== action.payload) };
+        case "COMPLETED_TASK":
+            return {...state, tasks: [...state.tasks.map((item:any)=> {
+                if(item.id === action.payload){
+                    item.completed = true
+                }
+                return item })]};
         case "RETURN_TASK":
             return {...state, tasks: state.tasks = defaultState.tasks}
         default:

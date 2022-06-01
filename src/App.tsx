@@ -6,11 +6,10 @@ import {fetchTasks} from "./asyncActions/tasks";
 
 function App() {
 
-    const dispatch:any = useDispatch()
+    /*const dispatch:any = useDispatch()
     useEffect(()=>{
         dispatch(fetchTasks())
-    },[])
-    console.log(1)
+    },[])*/
   return (
       <>
       <Header />

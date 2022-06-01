@@ -7,13 +7,19 @@ import {fetchTasks} from "../../asyncActions/tasks";
 export function Main(){
     const task:any = useSelector(state => state)
     const dispatch:any = useDispatch()
-    console.log(task)
     function deleteTask(t:any){
-        dispatch({type: 'DEL_TASK', payload: t.id})
+        dispatch({type: 'COMPLETED_TASK', payload: t.id})
+        console.log(task)
+    }
+    interface taskNewType {
+        userId: number;
+        id: number;
+        title: string;
+        completed:boolean;
     }
     function addTask(t:any){
 
-        const taskNew:any = {
+        const taskNew:taskNewType = {
             userId: 10,
             id: Math.random(),
             title: t,
@@ -23,7 +29,6 @@ export function Main(){
     }
 
     function returnTask(){
-        console.log(task)
         dispatch({type: 'RETURN_TASK', payload: task.returnTask})
     }
 
@@ -37,14 +42,15 @@ export function Main(){
                 </div>
 
                 <div className={'main__cards'}>
-                    { task.tasks.length > 0 ?
+                    {  task.tasks.length > 0 ?
                         task.tasks.map((item:any)=>
+                            !item.completed && (
                             <div className={'main__card'}>
                                 <h3 className={'main__card-name'}>
                                     {item.title}
                                 </h3>
                                 <button onClick={()=> deleteTask(item)} style={{fontSize:"3rem"}}>+</button>
-                            </div>
+                            </div> )
                         ) : <div>
                             Задач нет
                         </div>
