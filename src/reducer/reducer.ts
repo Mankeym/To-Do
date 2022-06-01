@@ -1,7 +1,8 @@
 
 const defaultState = {
     tasks: [],
-    returnTask: []
+    returnTask: [],
+    checked: false
 }
 export function reducer(state:any = defaultState, action:any) {
     switch(action.type) {
@@ -9,16 +10,24 @@ export function reducer(state:any = defaultState, action:any) {
             return { ...state, tasks: [...state.tasks,...action.payload], returnTask: [...state.returnTask,...action.payload]};
         }
         case "ADD_TASK":
-            console.log(state.tasks)
-            return { ...state.tasks, tasks: [{...action.payload}, ...state.tasks]  };
+            return { ...state, tasks: [{...action.payload}, ...state.tasks]  };
         case "COMPLETED_TASK":
             return {...state, tasks: [...state.tasks.map((item:any)=> {
-                if(item.id === action.payload){
+                if(item.id === action.payload && item.completed === false){
                     item.completed = true
+                    return item
                 }
-                return item })]};
+                if(item.id === action.payload && item.completed === true){
+                    item.completed = false
+                    return item
+                }
+                 })]};
         case "RETURN_TASK":
             return {...state, tasks: state.tasks = defaultState.tasks}
+        case "ACTIVE_CHECKED":
+            return {...state, checked: state.checked = true}
+        case "DISABLED_CHECKED":
+            return {...state, checked: state.checked = false}
         default:
             return state;
     }

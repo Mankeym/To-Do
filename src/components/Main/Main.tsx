@@ -31,7 +31,7 @@ export function Main(){
     function returnTask(){
         dispatch({type: 'RETURN_TASK', payload: task.returnTask})
     }
-
+    console.log(task.checked)
     return (
 
         <div className={'main'}>
@@ -42,7 +42,7 @@ export function Main(){
                 </div>
 
                 <div className={'main__cards'}>
-                    {  task.tasks.length > 0 ?
+                    {  (task.tasks.length > 0 && task.checked == false) &&(
                         task.tasks.map((item:any)=>
                             !item.completed && (
                             <div className={'main__card'}>
@@ -51,9 +51,18 @@ export function Main(){
                                 </h3>
                                 <button onClick={()=> deleteTask(item)} style={{fontSize:"3rem"}}>+</button>
                             </div> )
-                        ) : <div>
-                            Задач нет
-                        </div>
+                        ))
+                    }
+                    {  (task.tasks.length > 0 && task.checked == true) &&(
+                        task.tasks.map((item:any)=>
+                            item.completed && (
+                                <div className={'main__card'}>
+                                    <h3 className={'main__card-name'}>
+                                        {item.title}
+                                    </h3>
+                                    <button onClick={()=> deleteTask(item)} style={{fontSize:"3rem"}}>+</button>
+                                </div> )
+                        ))
                     }
 
                 </div>
