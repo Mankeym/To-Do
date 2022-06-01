@@ -60,7 +60,7 @@ export function Main(){
                                     <h3 className={'main__card-name'}>
                                         {item.title}
                                     </h3>
-                                    <button onClick={()=> deleteTask(item)} style={{fontSize:"3rem"}}>+</button>
+                                    <button onClick={()=> deleteTask(item)} className={'main__card-button'}><p style={{transform:'rotate(45deg);'}}>+</p></button>
                                 </div> )
                         ))
                     }
