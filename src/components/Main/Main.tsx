@@ -1,8 +1,7 @@
 import './Main.css'
-import {store} from "../../store/store";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {fetchTasks} from "../../asyncActions/tasks";
+import {taskNewType} from '../../interface/interface'
+
 
 export function Main(){
     const task:any = useSelector(state => state)
@@ -10,12 +9,6 @@ export function Main(){
     function deleteTask(t:any){
         dispatch({type: 'COMPLETED_TASK', payload: t.id})
         console.log(task)
-    }
-    interface taskNewType {
-        userId: number;
-        id: number;
-        title: string;
-        completed:boolean;
     }
     function addTask(t:any){
 

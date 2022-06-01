@@ -1,5 +1,7 @@
+import {state} from '../interface/interface'
 
-const defaultState = {
+
+const defaultState: state = {
     tasks: [],
     returnTask: [],
     checked: false
