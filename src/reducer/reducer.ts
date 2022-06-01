@@ -25,11 +25,16 @@ export function reducer(state:any = defaultState, action:any) {
                 } return item
                  })]};
         case "RETURN_TASK":
-            return {...state, tasks: state.tasks = defaultState.tasks}
+            return {...state, tasks: state.tasks.map((item:any)=>{
+                item.completed = true;
+                return item
+                })}
         case "ACTIVE_CHECKED":
             return {...state, checked: state.checked = true, }
         case "DISABLED_CHECKED":
             return {...state, checked: state.checked = false}
+        case "DELETED_TASK":
+            return {...state,tasks: state.tasks.filter((i:any)=> i.id != action.payload)}
         default:
             return state;
     }

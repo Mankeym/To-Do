@@ -10,23 +10,11 @@ export function Header(){
     const activeChecked = (e:any) =>{
         if(state.checked === false){
             dispatch({type: 'ACTIVE_CHECKED'})
-           /* buttons.forEach((item:any)=>{
-                if(item.classList.contains('active')){
-                    item.classList.remove('active')
-                }
-            })
-            e.currentTarget.classList.add('active')*/
         }
     }
     const disabledChecked = (e:any) =>{
         if(state.checked === true){
             dispatch({type: 'DISABLED_CHECKED'})
-            /*buttons.forEach((item:any)=>{
-                if(item.classList.contains('active')){
-                    item.classList.remove('active')
-                }
-            })
-            e.currentTarget.classList.add('active')*/
         }
     }
     return (

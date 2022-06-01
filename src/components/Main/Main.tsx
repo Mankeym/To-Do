@@ -6,12 +6,18 @@ import {taskNewType} from '../../interface/interface'
 export function Main(){
     const task:any = useSelector(state => state)
     const dispatch:any = useDispatch()
-    function deleteTask(t:any){
+    function disabledTask(t:any){
         dispatch({type: 'COMPLETED_TASK', payload: t.id})
-        console.log(task)
+    }
+    function deletedTask(t:any){
+        dispatch({type: 'DELETED_TASK', payload: t.id})
+
     }
     const openPopup = () =>{
         const popup:any = document.querySelector('.popup')
+        const dateToday:any = new Date();
+        const dateTest:any = document.getElementById('date')
+        dateTest.valueAsDate = dateToday
         popup.classList.add('active')
     }
     /*
@@ -29,7 +35,7 @@ export function Main(){
     function returnTask(){
         dispatch({type: 'RETURN_TASK', payload: task.returnTask})
     }
-    console.log(task.checked)
+
     return (
 
         <div className={'main'}>
@@ -50,7 +56,8 @@ export function Main(){
                                 <h3 className={'main__card-name'}>
                                     {item.title}
                                 </h3>
-                                <button className={'main__card-button'} onClick={()=> deleteTask(item)} ><p style={{transform:'rotate(45deg);'}}>+</p></button>
+                                <p style={{fontSize:'1rem', fontWeight:'bold', margin:'0'}}>Срок выполнения: {item.Date}</p>
+                                <button className={'main__card-button'} onClick={()=> disabledTask(item)} ><p>+</p></button>
                             </div> )
                         ))
                     }
@@ -61,7 +68,8 @@ export function Main(){
                                     <h3 className={'main__card-name'}>
                                         {item.title}
                                     </h3>
-                                    <button onClick={()=> deleteTask(item)} className={'main__card-button'}><p style={{transform:'rotate(45deg);'}}>+</p></button>
+                                    <p style={{fontSize:'1rem', fontWeight:'bold', margin:'0'}}>Срок выполнения: {item.Date}</p>
+                                    <button onClick={()=> deletedTask(item)} className={'main__card-button'}><p style={{transform:'rotate(45deg);'}}>+</p></button>
                                 </div> )
                         ))
                     }

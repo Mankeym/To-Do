@@ -1,8 +1,10 @@
 import './Popup.css'
 import {taskNewType} from "../../interface/interface";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 export const Popup = ()=>{
+    const state:any = useSelector(state => state)
+
     const dispatch = useDispatch()
     const closePopup = () =>{
         const popup:any = document.querySelector('.popup')
@@ -12,16 +14,20 @@ export const Popup = ()=>{
     }
     const submitForm = (e:any) => {
         e.preventDefault()
+        console.log()
         const taskNew:taskNewType = {
             userId: 10,
-            id: Math.random(),
+            id: state.tasks.length,
             title: e.target.task.value,
-            completed: false
+            completed: false,
+            Date: e.target.date.value.split('-').reverse().join('.'),
         }
         dispatch({type: 'ADD_TASK', payload:taskNew })
         closePopup()
+        e.target.task.value = ''
     }
     const changeInput = (e:any) =>{
+
         console.log(e.currentTarget.value.length)
         const buttonClose:any = document.getElementById('button-submit')
         if(e.currentTarget.value){
@@ -46,7 +52,10 @@ export const Popup = ()=>{
                 </button>
                 <form className={'popup__form'} onSubmit={(e)=> submitForm(e)}>
                     <h3 className={'popup__title'}>Новая задача</h3>
-                    <input onChange={(e)=> changeInput(e)}  name={"task"} placeholder={'Название задачи'} className={'popup__input'} />
+                    <span style={{width:"100%",textAlign:"left", fontSize:'23px', marginBottom:"15px", fontWeight:"bold"}}>Название задачи:</span>
+                    <input onChange={(e)=> changeInput(e)}  name={"task"} placeholder={'Введите название'} className={'popup__input'} />
+                    <span style={{width:"100%", textAlign:"left", fontSize:'23px', marginBottom:"15px", fontWeight:"bold"}}>Срок выполнения:</span>
+                    <input type={"date"} id={'date'} placeholder={'ntcn'} className={'popup__input'} required={true}/>
                     <button type={'submit'} className={'popup__button disabled'} id={'button-submit'} disabled={true}>Добавить</button>
                 </form>
             </div>

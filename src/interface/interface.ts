@@ -4,6 +4,7 @@ export interface taskNewType {
     id: number;
     title: string;
     completed:boolean;
+    Date: any;
 }
  export interface  state {
      tasks: any[],
