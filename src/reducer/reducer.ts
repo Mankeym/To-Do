@@ -25,7 +25,7 @@ export function reducer(state:any = defaultState, action:any) {
         case "RETURN_TASK":
             return {...state, tasks: state.tasks = defaultState.tasks}
         case "ACTIVE_CHECKED":
-            return {...state, checked: state.checked = true}
+            return {...state, checked: state.checked = true, }
         case "DISABLED_CHECKED":
             return {...state, checked: state.checked = false}
         default:
