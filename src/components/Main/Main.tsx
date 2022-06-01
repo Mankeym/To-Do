@@ -36,10 +36,13 @@ export function Main(){
 
         <div className={'main'}>
             <div className={"main__container"}>
-                <div style={{display:'flex'}} className={"main__button-container"}>
-                    <button onClick={()=> addTask(prompt())} style={{fontSize:"2rem"}}>Добавить задачу!</button>
-                    <button onClick={()=> returnTask()} style={{fontSize:"2rem"}} >Очистить</button>
-                </div>
+                { task.checked === false && (
+                    <div style={{display:'flex'}} className={"main__button-container"}>
+                        <button onClick={()=> addTask(prompt())} style={{fontSize:"2rem"}}>Добавить задачу!</button>
+                        <button onClick={()=> returnTask()} style={{fontSize:"2rem"}} >Очистить</button>
+                    </div>
+                )}
+
 
                 <div className={'main__cards'}>
                     {  (task.tasks.length > 0 && task.checked == false) &&(
