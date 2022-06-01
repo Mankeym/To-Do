@@ -10,6 +10,11 @@ export function Main(){
         dispatch({type: 'COMPLETED_TASK', payload: t.id})
         console.log(task)
     }
+    const openPopup = () =>{
+        const popup:any = document.querySelector('.popup')
+        popup.classList.add('active')
+    }
+    /*
     function addTask(t:any){
 
         const taskNew:taskNewType = {
@@ -19,7 +24,7 @@ export function Main(){
             completed: false
         }
         dispatch({type: 'ADD_TASK', payload:taskNew })
-    }
+    }*/
 
     function returnTask(){
         dispatch({type: 'RETURN_TASK', payload: task.returnTask})
@@ -31,7 +36,7 @@ export function Main(){
             <div className={"main__container"}>
                 { task.checked === false && (
                     <div style={{display:'flex'}} className={"main__button-container"}>
-                        <button onClick={()=> addTask(prompt())} style={{fontSize:"2rem"}}>Добавить задачу!</button>
+                        <button onClick={()=> openPopup()} style={{fontSize:"2rem"}}>Добавить задачу!</button>
                         <button onClick={()=> returnTask()} style={{fontSize:"2rem"}} >Очистить</button>
                     </div>
                 )}
