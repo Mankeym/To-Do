@@ -10,7 +10,7 @@ export function reducer(state:any = defaultState, action:any) {
             return { ...state, tasks: [...state.tasks,...action.payload], returnTask: [...state.returnTask,...action.payload]};
         }
         case "ADD_TASK":
-            return { ...state, tasks: [{...action.payload}, ...state.tasks]  };
+            return { ...state, tasks: [{...action.payload}, ...state.tasks], checked: state.checked = false  };
         case "COMPLETED_TASK":
             return {...state, tasks: [...state.tasks.map((item:any)=> {
                 if(item.id === action.payload && item.completed === false){

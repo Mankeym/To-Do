@@ -8,13 +8,35 @@
     margin: 40px auto;
     min-height: 700px;
 }
+.main__button-container{
+    border-bottom: 1px solid black;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+}
 .main__cards{
     display: flex;
     flex-direction: column;
 }
 .main__card{
-    width: 90%;
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+.main__card-button{
+    font-size: 3rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transform: rotate(0);
+    transition: all .35s;
+}
+.main__card-button:hover{
+    transform: rotate(180deg);
+    transition: all .35s;
+}
+.main__card-button p{
+    transform: rotate(45deg);
+    margin: 0;
 }
