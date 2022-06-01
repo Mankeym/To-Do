@@ -20,7 +20,7 @@ export function reducer(state:any = defaultState, action:any) {
                 if(item.id === action.payload && item.completed === true){
                     item.completed = false
                     return item
-                }
+                } return item
                  })]};
         case "RETURN_TASK":
             return {...state, tasks: state.tasks = defaultState.tasks}
